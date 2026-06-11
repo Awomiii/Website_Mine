@@ -7,30 +7,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    @media (max-width: 600px) {
-
-    .container {
-        width: 95%;
-        padding: 25px;
-    }
-
-    h1 {
-        font-size: 2.2rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    p {
-        font-size: 1rem;
-    }
-
-    button {
-        font-size: 1rem;
-        padding: 12px 25px;
-    }
-}
+   
 
     <style>
         *{
@@ -172,6 +149,30 @@
                 transform:scale(2);
             }
         }
+        @media (max-width: 600px) {
+
+    .container {
+        width: 95%;
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+}  
     </style>
 </head>
 <body>
@@ -248,71 +249,80 @@
                 messages[(noCount - 1) % messages.length];
         }
 
-        function accepted(){
+       function accepted() {
 
-            document.body.innerHTML = `
-                <div style="
-                    height:100vh;
-                    display:flex;
-                    flex-direction:column;
-                    justify-content:center;
-                    align-items:center;
-                    text-align:center;
-                    background:linear-gradient(135deg,#ff758c,#ff7eb3);
-                    color:white;
-                    font-family:Poppins,sans-serif;
-                    padding:20px;
-                ">
+    document.body.innerHTML = `
+    <div id="successPage" style="
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100vh;
+        overflow:hidden;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        background:linear-gradient(135deg,#ff758c,#ff7eb3);
+        color:white;
+        font-family:Poppins,sans-serif;
+        padding:20px;
+    ">
+        <h1 style="font-size:3rem;">
+            Lessss Gaurrrr 🥹❤️
+        </h1>
 
-                    <h1 style="
-                        font-size:4rem;
-                        margin-bottom:20px;
-                    ">
-                        YAYYYY ❤️🎉
-                    </h1>
+        <p style="
+            max-width:700px;
+            font-size:1.4rem;
+            line-height:1.8;
+            margin-top:20px;
+        ">
+            Just so you know... I can't stop
+            thinking about you. ❤️
+            <br><br>
 
-                    <h2 style="
-                        margin-bottom:15px;
-                        font-size:2rem;
-                    ">
-                        Lessss Gaurrrr 🥹❤️
-                    </h2>
+            And now that you've said yes,
+            get prepared because I plan on making
+            lots of amazing memories with you. 🌹✨
+        </p>
+    </div>
+    `;
 
-                    <p style="
-                        max-width:700px;
-                        font-size:1.3rem;
-                        line-height:1.8;
-                    ">
-                        Just so you know... I can't stop thinking about you.
-                        ❤️<br><br>
-
-                        And now that you've said yes,
-                        get prepared because I plan on going all the way with you. 🌹✨
-                    </p>
-
-                </div>
-            `;
-
-            setInterval(createHeart, 200);
-            setInterval(createSparkle, 300);
-        }
+    setInterval(createHeart, 300);
+}
 
         function createHeart(){
 
-            const heart = document.createElement("div");
+    const heart = document.createElement("div");
 
-            heart.className = "hearts";
-            heart.innerHTML = "❤️";
+    heart.innerHTML = "❤️";
 
-            heart.style.left = Math.random() * window.innerWidth + "px";
-            heart.style.bottom = "0px";
+    heart.style.position = "fixed";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.bottom = "-20px";
+    heart.style.fontSize = "30px";
+    heart.style.pointerEvents = "none";
+    heart.style.zIndex = "9999";
 
-            document.body.appendChild(heart);
+    document.body.appendChild(heart);
 
-            setTimeout(() => {
-                heart.remove();
-            }, 3000);
+    let pos = -20;
+
+    const float = setInterval(() => {
+
+        pos += 4;
+
+        heart.style.bottom = pos + "px";
+
+        if(pos > window.innerHeight + 100){
+            clearInterval(float);
+            heart.remove();
         }
+
+    },20);
+}
 
         function createSparkle(){
 
